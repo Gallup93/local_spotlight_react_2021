@@ -1,2 +1,5 @@
-<h1>Welcome to Local Spotlight</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% if current_user %>
+  <%= react_component 'HomeGreeting', name: "#{current_user.email}" %>
+<% else %>
+  <%= react_component 'HomeGreeting', name: "human friend" %>
+<% end %>
