@@ -1,6 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import ReactDOM from 'react-dom'  // XXXXXXXXXXXXXXXXXX
+import axios from 'axios' // XXXXXXXXXXXXXXXXXX
+
 class BrowseFilter extends React.Component {
   constructor() {
     super();
@@ -11,6 +14,15 @@ class BrowseFilter extends React.Component {
   handleChecked () {
     this.setState({isChecked: !this.state.isChecked});
   }
+
+
+  componentDidMount() {
+    axios.get('/artists/?test=true')
+    .then(res => {
+      console.log(res.data)
+    })
+  }
+
 
 
   render () {
