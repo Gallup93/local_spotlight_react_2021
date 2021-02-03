@@ -2,27 +2,14 @@
 
 <h1>Artists</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="artists-container">
+  <%= react_component 'BrowseFilter' %>
+</div>
 
-  <tbody>
-    <% @artists.each do |artist| %>
-      <tr>
-        <td><%="#{artist.spotify_id}"%></td>
-        <td><%="#{artist.city}"%></td>
-        <td><%="#{artist.state}"%></td>
-        <td><%= link_to 'Show', artist %></td>
-        <td><%= link_to 'Edit', edit_artist_path(artist) %></td>
-        <td><%= link_to 'Destroy', artist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div>
+  <%= react_component 'ArtistDisplay', artists: @artists %>
+</div>
 
-<br>
-
+<br/>
 <%= link_to 'New Artist', new_artist_path %>
+<br/>
