@@ -3,7 +3,9 @@ class ArtistsController < ApplicationController
 
   # GET /artists or /artists.json
   def index
-    @artists = Artist.all
+    @location = set_location
+    @new_location = Location.new
+    @artists = compile_artists(@location)
   end
 
   # GET /artists/1 or /artists/1.json
@@ -22,7 +24,6 @@ class ArtistsController < ApplicationController
   # POST /artists or /artists.json
   def create
     @artist = Artist.new(artist_params)
-
     respond_to do |format|
       if @artist.save
         format.html { redirect_to @artist, notice: "Artist was successfully created." }
@@ -64,6 +65,18 @@ class ArtistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def artist_params
-      params.fetch(:artist, {})
+      params.permit(:city, :state, :spotify_id)
+    end
+
+    def set_location
+      if !Location.all.empty?
+        Location.all.last
+      else
+        Location.create(city: "Chicago", state: "IL")
+      end
+    end
+
+    def compile_artists(location)
+      Artist.where("state = ? and city = ?", "#{location.state}", "#{location.city}" )
     end
 end
