@@ -9,14 +9,15 @@ class Wrapper extends React.Component {
     return (
       <div class="artists-container">
         <ArtistDisplay artists={this.props.artists}/>
-        <IFramePlayer />
+        <IFramePlayer spotify_id={this.props.spotify_id}/>
       </div>
     );
   }
 }
 
 ArtistDisplay.propTypes = {
-  artists: PropTypes.array
+  artists: PropTypes.array,
+  spotify_id: PropTypes.string
 };
 
 
