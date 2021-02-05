@@ -6,13 +6,21 @@ import axios from 'axios'
 
 class IFramePlayer extends React.Component {
   render () {
+    var spotifyID = `https://open.spotify.com/embed/artist/${ this.props.spotify_id }`
+
+
     return (
       <div class="home-container">
-        <iframe src="https://open.spotify.com/embed/artist/1jAlXWRhCvBrpnX8avLVRP" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <iframe src={spotifyID} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
       </div>
     );
   }
 }
 
+
+
+IFramePlayer.propTypes = {
+  spotify_id: PropTypes.string
+};
 
 export default IFramePlayer;
