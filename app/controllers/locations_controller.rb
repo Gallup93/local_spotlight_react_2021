@@ -26,7 +26,6 @@ class LocationsController < ApplicationController
     respond_to do |format|
       if @location.save
         format.html { redirect_to '/artists' }
-        # format.json { render :show, status: :created, location: @location }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @location.errors, status: :unprocessable_entity }

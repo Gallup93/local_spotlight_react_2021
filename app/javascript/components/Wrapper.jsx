@@ -3,10 +3,6 @@ import PropTypes from "prop-types";
 import HomeGreeting from './HomeGreeting'
 import IFramePlayer from './IFramePlayer'
 import ArtistDisplay from './ArtistDisplay'
-import BrowseFilter from './BrowseFilter'
-
-import ReactDOM from 'react-dom'
-import axios from 'axios'
 
 class Wrapper extends React.Component {
   render () {
