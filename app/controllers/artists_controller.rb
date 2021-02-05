@@ -6,6 +6,7 @@ class ArtistsController < ApplicationController
     @location = set_location
     @new_location = Location.new
     @artists = compile_artists(@location)
+    @selected_artist = select_artist(@artists)
   end
 
   # GET /artists/1 or /artists/1.json
@@ -78,5 +79,13 @@ class ArtistsController < ApplicationController
 
     def compile_artists(location)
       Artist.where("state = ? and city = ?", "#{location.state}", "#{location.city}" )
+    end
+
+    def select_artist(artists)
+      if params["selected_id"]
+        Artist.find(params["selected_id"]).spotify_id
+      else
+        artists.sample.spotify_id
+      end
     end
 end
