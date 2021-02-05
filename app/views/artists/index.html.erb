@@ -1,15 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Artists</h1>
+<%= form_with url: "/locations", method: :post, remote: true do |form| %>
+  <%= form.label :city, "DA CITY:" %>
+  <%= form.text_field :city %>
+  <%= form.label :city, "DA STATE:" %>
+  <%= form.text_field :state %>
+  <%= form.submit "Search" %>
+<% end %>
 
-<div class="artists-container">
-  <%= react_component 'BrowseFilter' %>
-</div>
+
 
 <div>
-  <%= react_component 'ArtistDisplay', artists: @artists %>
+  <%= react_component 'Wrapper', artists: @artists, location: @location, new_location: @new_location %>
 </div>
-
-<br/>
-<%= link_to 'New Artist', new_artist_path %>
-<br/>
