@@ -6,8 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+rockford = Location.create(city: "Rockford",state: "IL")
+chicago = Location.create(city: "Chicago",state: "IL")
+locations = [rockford, chicago]
+
 2.times do |i|
-    User.create(username: "TestUser1", email: "user-#{i+1}@example.com", password: "password", password_confirmation: "password")
+    User.create(username: "TestUser1", email: "user-#{i+1}@example.com", password: "password", password_confirmation: "password", location_id: locations[i].id)
 end
 
 spotify_ids = ["1jAlXWRhCvBrpnX8avLVRP", "5PxhTwi9zUw26P4UUBuRs6", "3EusnQEaJ7atdju9f3QoB0", "2oWWnEqDToq3n0Hv1zPZQJ", "77WeI8znTJNL9VgXxJVfOO", "2vnB6tuQMaQpORiRdvXF9H", "1SoBNpuC0N4nvaQFENS0qf", "5F24VT2NBrbVTIAOmzWBux", "0fcwfASKlWfHUqoeLZBgG3"]
