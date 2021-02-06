@@ -6,9 +6,10 @@ import ArtistDisplay from './ArtistDisplay'
 
 class Wrapper extends React.Component {
   render () {
+    
     return (
-      <div class="artists-container">
-        <ArtistDisplay artists={this.props.artists}/>
+      <div class="wrapper-component">
+        <ArtistDisplay artists={this.props.artists}/><br></br>
         <IFramePlayer spotify_id={this.props.spotify_id}/>
       </div>
     );
