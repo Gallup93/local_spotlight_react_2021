@@ -3,11 +3,14 @@ import PropTypes from "prop-types";
 
 class ArtistDisplay extends React.Component {
 
-
   render () {
+    function ChangeSelectedArtist() {
+      return console.log("Test")
+    }
+
     function artistsList (artists) {
       return (
-        <div>
+        <div class="artist-display-component">
           <h1>---ARTISTS-DISPLAY-TABLE---</h1>
           <table>
             <thead>
@@ -18,10 +21,8 @@ class ArtistDisplay extends React.Component {
             <tbody>
               {
                 artists.map((artist) => (
-                  <div>
-                    <td>{artist.city}</td>
-                    <td>{artist.state}</td>
-                    <td>{artist.spotify_id}</td><br></br>
+                  <div class="artist-container" key={`artist-${artist.id}`} onClick={ChangeSelectedArtist}>
+                    <td>{artist.name} | CITY: {artist.city}, STATE: {artist.state}, FOLLOWERS: {artist.followers}</td>
                   </div>
                 ))
               }
