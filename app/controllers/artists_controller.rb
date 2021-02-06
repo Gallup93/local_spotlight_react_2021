@@ -24,7 +24,11 @@ class ArtistsController < ApplicationController
 
   # POST /artists or /artists.json
   def create
+    require 'artist_stitcher'
+
     @artist = Artist.new(artist_params)
+    ArtistStitcher.new(@artist)
+
     respond_to do |format|
       if @artist.save
         format.html { redirect_to @artist, notice: "Artist was successfully created." }
@@ -66,11 +70,11 @@ class ArtistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def artist_params
-      params.permit(:city, :state, :spotify_id)
+      params.permit(:city, :state, :spotify_id, :name, :followers, :popularity, :genres, :images)
     end
 
     def set_location
-      if !Location.all.empty?
+      if !Location.all.empty? && Location.all.last
         Location.all.last
       else
         Location.create(city: "Chicago", state: "IL")
@@ -85,7 +89,11 @@ class ArtistsController < ApplicationController
       if params["selected_id"]
         Artist.find(params["selected_id"]).spotify_id
       else
-        artists.sample.spotify_id
+        if !artists.empty?
+          artists.sample.spotify_id
+        else
+          "no artists"
+        end
       end
     end
 end
