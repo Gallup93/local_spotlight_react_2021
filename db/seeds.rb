@@ -8,6 +8,7 @@
 
 rockford = Location.create(city: "Rockford",state: "IL")
 chicago = Location.create(city: "Chicago",state: "IL")
+chicago = Location.create(city: "Denver",state: "CO")
 locations = [rockford, chicago]
 
 2.times do |i|
