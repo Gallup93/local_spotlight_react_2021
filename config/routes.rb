@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :locations
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations'}
   root 'pages#home'
   resources :artists
 
