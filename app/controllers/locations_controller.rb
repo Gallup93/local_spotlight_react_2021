@@ -21,11 +21,11 @@ class LocationsController < ApplicationController
 
   # POST /locations or /locations.json
   def create
-    @location = Location.new(location_params)
+    @location = Location.where('city = ? and state = ?', "#{params['city']}", "#{params['state']}")[0]
 
     respond_to do |format|
-      if @location.save
-        format.html { redirect_to '/artists' }
+      if @location
+        format.html { redirect_to "/artists?select_location=#{@location.id}" }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @location.errors, status: :unprocessable_entity }
