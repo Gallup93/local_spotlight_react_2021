@@ -74,10 +74,14 @@ class ArtistsController < ApplicationController
     end
 
     def set_location
-      if !Location.all.empty? && Location.all.last
-        Location.all.last
+      if !params['select_location']
+        if current_user
+          Location.find(current_user.location_id)
+        else
+          Location.all.sample
+        end
       else
-        Location.create(city: "Chicago", state: "IL")
+        Location.find(params['select_location'])
       end
     end
 
