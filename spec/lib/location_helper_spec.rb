@@ -10,4 +10,12 @@ RSpec.describe "Location Helper" do
 
     expect(found_location[0].city).to eq("Denver")
   end
+
+  it "verifies valid location by city/state" do
+    location = { city: "Rockford", state: "IL"}
+
+    result = LocationHelper.validate_city_state(location)
+
+    expect(result).to eq(true)
+  end
 end
