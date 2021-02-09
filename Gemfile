@@ -22,6 +22,7 @@ gem 'react-rails'
 gem 'faraday'
 gem "figaro"
 gem 'rspec-rails', '~> 4.0.2'
+gem 'city-state'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
