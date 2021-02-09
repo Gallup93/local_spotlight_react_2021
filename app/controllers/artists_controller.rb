@@ -1,4 +1,5 @@
 require 'artist_stitcher'
+require 'location_helper'
 
 class ArtistsController < ApplicationController
   before_action :set_artist, only: %i[ show edit update destroy ]
@@ -26,7 +27,19 @@ class ArtistsController < ApplicationController
 
   # POST /artists or /artists.json
   def create
+    location = artist_params.extract!(:city, :state)
+    verification_result = LocationHelper.find_by_city_state(location)
     base_artist = Artist.new(artist_params)
+
+    if verification_result.count > 0
+      @aritst = verification_result[0]
+    else
+      if LocationHelper.validate_city_state(location)
+        Location.create(city: location[:city], state: location[:state].upcase)
+        base_artist.location_id = Location.last.id
+      end
+    end
+
     stitched_json = ArtistStitcher.new(base_artist)
     parsed_json = JSON.parse(stitched_json.artist)
     @artist = Artist.new(parsed_json)
