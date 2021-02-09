@@ -1,0 +1,26 @@
+.wrapper-component {
+  text-align: center;
+  color: red;
+  border-style: dashed;
+  padding: 10px 10px 10px 10px;
+}
+.artist-display-component {
+  color: green;
+  border-style: dashed;
+  padding: 10px 10px 10px 10px;
+}
+.iframe-display-component {
+  color: blue;
+  border-style: dashed;
+  padding: 10px 10px 10px 10px;
+}
+.artist-container {
+  color: #000000;
+  border-style: dashed;
+  padding: 10px 10px 10px 10px;
+}
+.location-form-container {
+  color: #FF9900;
+  border-style: dashed;
+  padding: 10px 10px 10px 10px;
+}

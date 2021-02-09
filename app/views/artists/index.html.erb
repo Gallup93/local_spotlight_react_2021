@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<div class="location-form-container">
+  <%= form_with url: "/locations", method: :post, remote: true do |form| %>
+  <%= form.label :city, "DA CITY:" %>
+  <%= form.text_field :city %>
+  <%= form.label :city, "DA STATE:" %>
+  <%= form.text_field :state %>
+  <%= form.submit "Search" %>
+  <% end %>
+</div>
+
+
+<div>
+  <%= react_component 'Wrapper', artists: @artists, location: @location, new_location: @new_location, spotify_id: @selected_artist, selected_artist: @selected_artist %>
+</div>
