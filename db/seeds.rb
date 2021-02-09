@@ -26,16 +26,16 @@ images = ["https://i.scdn.co/image/84282c28d851a700132356381fcfbadc67ff498b",
     "https://i.scdn.co/image/42ae0f180f16e2f21c1f2212717fc436f5b95451",
     "https://i.scdn.co/image/e797ad36d56c3fc8fa06c6fe91263a15bf8391b8"]
 
-Artist.create(city: "Rockford", state: "IL", spotify_id: "#{spotify_ids[0]}", name: "Pink Beam", followers: 111, popularity: rand(1..100), genres: genres.sample(3), images: images)
-Artist.create(city: "Rockford", state: "IL", spotify_id: "#{spotify_ids[1]}", name: "Quilt Club", followers: 2000, popularity: rand(1..100), genres: genres.sample(3), images: images)
-Artist.create(city: "Rockford", state: "IL", spotify_id: "#{spotify_ids[2]}", name: "Purple Hell", followers: 30400, popularity: rand(1..100), genres: genres.sample(3), images: images)
-Artist.create(city: "Rockford", state: "IL", spotify_id: "#{spotify_ids[3]}", name: "The Moon Men", followers: 100300, popularity: rand(1..100), genres: genres.sample(3), images: images)
-Artist.create(city: "Rockford", state: "IL", spotify_id: "#{spotify_ids[4]}", name: "Taboo Blah Blah", followers: 690500, popularity: rand(1..100), genres: genres.sample(3), images: images)
-Artist.create(city: "Rockford", state: "IL", spotify_id: "#{spotify_ids[5]}", name: "Name The Moon", followers: 1300500, popularity: rand(1..100), genres: genres.sample(3), images: images)
+Artist.create(city: "Rockford", state: "IL", spotify_id: "#{spotify_ids[0]}", name: "Pink Beam", followers: 111, popularity: rand(1..100), genres: genres.sample(3), images: images, location_id: rockford.id)
+Artist.create(city: "Rockford", state: "IL", spotify_id: "#{spotify_ids[1]}", name: "Quilt Club", followers: 2000, popularity: rand(1..100), genres: genres.sample(3), images: images, location_id: rockford.id)
+Artist.create(city: "Rockford", state: "IL", spotify_id: "#{spotify_ids[2]}", name: "Purple Hell", followers: 30400, popularity: rand(1..100), genres: genres.sample(3), images: images, location_id: rockford.id)
+Artist.create(city: "Rockford", state: "IL", spotify_id: "#{spotify_ids[3]}", name: "The Moon Men", followers: 100300, popularity: rand(1..100), genres: genres.sample(3), images: images, location_id: rockford.id)
+Artist.create(city: "Rockford", state: "IL", spotify_id: "#{spotify_ids[4]}", name: "Taboo Blah Blah", followers: 690500, popularity: rand(1..100), genres: genres.sample(3), images: images, location_id: rockford.id)
+Artist.create(city: "Rockford", state: "IL", spotify_id: "#{spotify_ids[5]}", name: "Name The Moon", followers: 1300500, popularity: rand(1..100), genres: genres.sample(3), images: images, location_id: rockford.id)
 
-Artist.create(city: "Chicago", state: "IL", spotify_id: "#{spotify_ids[6]}", name: "Beach Bunny", followers: 350000, popularity: rand(1..100), genres: genres.sample(3), images: images)
-Artist.create(city: "Chicago", state: "IL", spotify_id: "#{spotify_ids[7]}", name: "Ratboys", followers: 23000, popularity: rand(1..100), genres: genres.sample(3), images: images)
-Artist.create(city: "Chicago", state: "IL", spotify_id: "#{spotify_ids[8]}", name: "The Smashing Pumpkins", followers: 3150600, popularity: rand(1..100), genres: genres.sample(3), images: images)
+Artist.create(city: "Chicago", state: "IL", spotify_id: "#{spotify_ids[6]}", name: "Beach Bunny", followers: 350000, popularity: rand(1..100), genres: genres.sample(3), images: images, location_id: chicago.id)
+Artist.create(city: "Chicago", state: "IL", spotify_id: "#{spotify_ids[7]}", name: "Ratboys", followers: 23000, popularity: rand(1..100), genres: genres.sample(3), images: images, location_id: chicago.id)
+Artist.create(city: "Chicago", state: "IL", spotify_id: "#{spotify_ids[8]}", name: "The Smashing Pumpkins", followers: 3150600, popularity: rand(1..100), genres: genres.sample(3), images: images, location_id: chicago.id)
 
-Artist.create(city: "Denver", state: "CO", spotify_id: "#{spotify_ids[9]}", name: "Eldren", followers: 5000, popularity: rand(1..100), genres: genres.sample(3), images: images)
-Artist.create(city: "Denver", state: "CO", spotify_id: "#{spotify_ids[10]}", name: "Decollage", followers: 50, popularity: rand(1..100), genres: genres.sample(3), images: images)
+Artist.create(city: "Denver", state: "CO", spotify_id: "#{spotify_ids[9]}", name: "Eldren", followers: 5000, popularity: rand(1..100), genres: genres.sample(3), images: images, location_id: denver.id)
+Artist.create(city: "Denver", state: "CO", spotify_id: "#{spotify_ids[10]}", name: "Decollage", followers: 50, popularity: rand(1..100), genres: genres.sample(3), images: images, location_id: denver.id)
