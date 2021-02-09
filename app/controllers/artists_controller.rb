@@ -1,3 +1,5 @@
+require 'artist_stitcher'
+
 class ArtistsController < ApplicationController
   before_action :set_artist, only: %i[ show edit update destroy ]
 
@@ -24,10 +26,10 @@ class ArtistsController < ApplicationController
 
   # POST /artists or /artists.json
   def create
-    require 'artist_stitcher'
-
-    @artist = Artist.new(artist_params)
-    ArtistStitcher.new(@artist)
+    base_artist = Artist.new(artist_params)
+    stitched_json = ArtistStitcher.new(base_artist)
+    parsed_json = JSON.parse(stitched_json.artist)
+    @artist = Artist.new(parsed_json)
 
     respond_to do |format|
       if @artist.save
