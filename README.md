@@ -19,3 +19,15 @@ This repository is a playground for the revision of the original Local Spotliigh
 * RSpec
 
 * Devise
+ 
+# Current User Features
+
+* Login/Signup (via devise) 
+`` '/users/sign_in' ``
+`` '/users/sign_up' ``
+
+* Browse artists in database
+`` '/artists' ``
+
+* Add new artist to database
+`` '/artists/new' ``
