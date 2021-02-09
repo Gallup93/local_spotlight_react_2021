@@ -1,24 +1,21 @@
-# README
+# Local Spotlight
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Local Spotlight is a user-driven database of Spotify artists and their assocaited home city/state. The purpose of the application is to help users find and share local music in their communities. 
 
-Things you may want to cover:
+This repository is a playground for the revision of the original Local Spotliight V1 which was created as a school project in 2020. 
+Original LS Repo: https://github.com/Gallup93/local_spotlight
+Original LS Live Heroku: https://polar-caverns-76159.herokuapp.com/ 
 
-* Ruby version
+# Tech Stack
 
-* System dependencies
+* Ruby version '2.6.3'
 
-* Configuration
+* Rails version '~> 6.0.3', '>= 6.0.3.4'
 
-* Database creation
+* React
 
-* Database initialization
+* PostgreSQL
 
-* How to run the test suite
+* RSpec
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Devise
