@@ -27,22 +27,25 @@ class ArtistsController < ApplicationController
 
   # POST /artists or /artists.json
   def create
+    # create Artist object and check if given location params already exist in DB
+    @artist = Artist.new(artist_params)
     location = artist_params.extract!(:city, :state)
-    verification_result = LocationHelper.find_by_city_state(location)
-    base_artist = Artist.new(artist_params)
-
-    if verification_result.count > 0
-      @aritst = verification_result[0]
-    else
-      if LocationHelper.validate_city_state(location)
-        Location.create(city: location[:city], state: location[:state].upcase)
-        base_artist.location_id = Location.last.id
-      end
+    existing_location = LocationHelper.find_by_city_state(location)[0]
+    # set @artist location_id
+    # if existing, set @artist.id to that locations ID
+    # if not existing, verify city/state and create new Location if valid.
+    if existing_location
+      @artist.location_id = existing_location.id
+    elsif LocationHelper.validate_city_state(location)
+      new_location = Location.create(city: location[:city], state: location[:state].upcase)
+      @artist.location_id = new_location.id
     end
-
-    stitched_json = ArtistStitcher.new(base_artist)
-    parsed_json = JSON.parse(stitched_json.artist)
-    @artist = Artist.new(parsed_json)
+    # if @artist location is valid, use artist stitcher to create full Artist object
+    if @artist.location_id
+      stitched_json = ArtistStitcher.new(@artist)
+      parsed_json = JSON.parse(stitched_json.artist)
+      @artist = Artist.new(parsed_json)
+    end
 
     respond_to do |format|
       if @artist.save
