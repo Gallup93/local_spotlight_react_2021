@@ -1,5 +1,6 @@
-require 'artist_stitcher'
+require 'artist_commander'
 require 'location_helper'
+require 'json'
 
 class ArtistsController < ApplicationController
   before_action :set_artist, only: %i[ show edit update destroy ]
@@ -27,33 +28,19 @@ class ArtistsController < ApplicationController
 
   # POST /artists or /artists.json
   def create
-    # create Artist object and check if given location params already exist in DB
-    @artist = Artist.new(artist_params)
-    location = artist_params.extract!(:city, :state)
-    existing_location = LocationHelper.find_by_city_state(location)[0]
-    # set @artist location_id
-    # if existing, set @artist.id to that locations ID
-    # if not existing, verify city/state and create new Location if valid.
-    if existing_location
-      @artist.location_id = existing_location.id
-    elsif LocationHelper.validate_city_state(location)
-      new_location = Location.create(city: location[:city], state: location[:state].upcase)
-      @artist.location_id = new_location.id
-    end
-    # if @artist location is valid, use artist stitcher to create full Artist object
-    if @artist.location_id
-      stitched_json = ArtistStitcher.new(@artist)
-      parsed_json = JSON.parse(stitched_json.artist)
-      @artist = Artist.new(parsed_json)
-    end
+    @params = format_params(artist_params)
+    @artist = Artist.new(@params)
+    @result = ArtistCommander.process_new_artist(@artist)
 
-    respond_to do |format|
-      if @artist.save
+    if @result[:type] == "error"
+      flash[:error] = @result[:value]
+      redirect_to '/artists/new'
+    else
+      @artist.save
+      respond_to do |format|
+        @artist.save
         format.html { redirect_to @artist, notice: "Artist was successfully created." }
         format.json { render :show, status: :created, location: @artist }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @artist.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -81,6 +68,13 @@ class ArtistsController < ApplicationController
   end
 
   private
+
+  def format_params(artist_params)
+    formatted_city = artist_params[:city].downcase
+    formatted_state = artist_params[:state].upcase
+    spotify_id = artist_params[:spotify_id]
+    { city: formatted_city, state: formatted_state, spotify_id: spotify_id }
+  end
     # Use callbacks to share common setup or constraints between actions.
     def set_artist
       @artist = Artist.find(params[:id])
@@ -91,6 +85,7 @@ class ArtistsController < ApplicationController
       params.permit(:city, :state, :spotify_id, :name, :followers, :popularity, :genres, :images)
     end
 
+    # temporary method to set artists#index browse location
     def set_location
       if !params['select_location']
         if current_user
@@ -103,10 +98,12 @@ class ArtistsController < ApplicationController
       end
     end
 
+    # temporary method to compile artists from given location for artists#index
     def compile_artists(location)
       Artist.where("state = ? and city = ?", "#{location.state}", "#{location.city}" )
     end
 
+    # temporary method for selecting current artist highlighted in artists#index
     def select_artist(artists)
       if params["selected_id"]
         Artist.find(params["selected_id"]).spotify_id
