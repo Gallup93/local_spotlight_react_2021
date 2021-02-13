@@ -17,11 +17,11 @@ class RegistrationsController < Devise::RegistrationsController
 
   def add_location
     city_state = { city: params['user']['city'], state: params['user']['state'] }
-    location = LocationHelper.find_by_city_state(city_state)[0]
+    location = LocationHelper.get_existing(city_state)
 
     if location
       params['user']['location_id'] = location.id
-    elsif LocationHelper.validate_city_state(city_state)
+    elsif LocationHelper.get_existing(city_state)
       new_location = Location.create(city: city_state[:city], state: city_state[:state])
       params['user']['location_id'] = new_location.id
     end
