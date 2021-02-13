@@ -66,10 +66,33 @@ RSpec.describe "Location Helper" do
       expect(result).to eq(Location.last.id)
     end
 
-    it "returns error messahe if invalid" do
+    it "returns error message if invalid" do
       city_state = {city: "", state: "WI"}
       result = LocationHelper.create_location(city_state)
       expect(result).to eq(nil)
+    end
+  end
+
+  describe "process_city_state()" do
+    it "if valid will return type: 'success', value: <Location object>" do
+      city_state = { city: "Rockford", state: "IL" }
+      result = LocationHelper.process_city_state(city_state)
+      expect(result[:type]).to eq("success")
+      expect(result[:value][:id]).to_not eq(nil)
+    end
+
+    it "invalid city returns => { type: 'error', value: 'city invalid' }" do
+      city_state = { city: "Screw City", state: "IL" }
+      result = LocationHelper.process_city_state(city_state)
+      expect(result[:type]).to eq("error")
+      expect(result[:value]).to eq("Invalid City")
+    end
+
+    it "invalid state returns => { type: 'error', value: 'state invalid' }" do
+      city_state = { city: "Rockford", state: "Illinois" }
+      result = LocationHelper.process_city_state(city_state)
+      expect(result[:type]).to eq("error")
+      expect(result[:value]).to eq("Invalid State")
     end
   end
 end
