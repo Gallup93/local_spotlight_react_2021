@@ -30,4 +30,17 @@ class LocationHelper
     location = Location.new(city: city_state[:city], state: city_state[:state])
     location.save ? location.id : nil
   end
+
+  # location is either in params, associated with current_user, or random.
+  def self.browse_location(params, cur_user)
+    if params
+      Location.find(params)
+    else
+      if cur_user
+        Location.find(cur_user.location_id)
+      else
+        Location.find(Artist.all.sample.location_id)
+      end
+    end
+  end
 end

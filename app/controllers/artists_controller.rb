@@ -87,15 +87,7 @@ class ArtistsController < ApplicationController
 
     # temporary method to set artists#index browse location
     def set_location
-      if !params['select_location']
-        if current_user
-          Location.find(current_user.location_id)
-        else
-          Location.all.sample
-        end
-      else
-        Location.find(params['select_location'])
-      end
+      LocationHelper.browse_location(params['select_location'], current_user)
     end
 
     # temporary method to compile artists from given location for artists#index
