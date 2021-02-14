@@ -48,3 +48,4 @@ current to-do items:
 - Implement VCR for API testing
 - Create user-favorites functionality
 - Deploy to Heroku
+- Stylize
