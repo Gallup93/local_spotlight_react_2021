@@ -10,7 +10,7 @@ class ArtistsController < ApplicationController
     @location = set_location
     @new_location = Location.new
     @artists = compile_artists(@location)
-    @selected_artist = select_artist(@artists)
+    @selected_spotify_id = select_artist(@artists, params['select_artist'])
   end
 
   # GET /artists/1 or /artists/1.json
@@ -31,7 +31,6 @@ class ArtistsController < ApplicationController
     @params = format_params(artist_params)
     @artist = Artist.new(@params)
     @result = ArtistCommander.process_new_artist(@artist)
-
     if @result[:type] == "error"
       flash[:error] = @result[:value]
       redirect_to '/artists/new'
@@ -68,51 +67,36 @@ class ArtistsController < ApplicationController
   end
 
   private
-
+  # use artist_params to pre-format base_artist's city/state
   def format_params(artist_params)
     formatted_city = artist_params[:city].downcase
     formatted_state = artist_params[:state].upcase
     spotify_id = artist_params[:spotify_id]
     { city: formatted_city, state: formatted_state, spotify_id: spotify_id }
   end
-    # Use callbacks to share common setup or constraints between actions.
-    def set_artist
-      @artist = Artist.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def artist_params
-      params.permit(:city, :state, :spotify_id, :name, :followers, :popularity, :genres, :images)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_artist
+    @artist = Artist.find(params[:id])
+  end
 
-    # temporary method to set artists#index browse location
-    def set_location
-      if !params['select_location']
-        if current_user
-          Location.find(current_user.location_id)
-        else
-          Location.all.sample
-        end
-      else
-        Location.find(params['select_location'])
-      end
-    end
+  # Only allow a list of trusted parameters through.
+  def artist_params
+    params.permit(:city, :state, :spotify_id, :name, :followers, :popularity, :genres, :images)
+  end
 
-    # temporary method to compile artists from given location for artists#index
-    def compile_artists(location)
-      Artist.where("state = ? and city = ?", "#{location.state}", "#{location.city}" )
-    end
+  # temporary method to set artists#index browse location
+  def set_location
+    LocationHelper.browse_location(params['select_location'], current_user)
+  end
 
-    # temporary method for selecting current artist highlighted in artists#index
-    def select_artist(artists)
-      if params["selected_id"]
-        Artist.find(params["selected_id"]).spotify_id
-      else
-        if !artists.empty?
-          artists.sample.spotify_id
-        else
-          "no artists"
-        end
-      end
-    end
+  # temporary method to compile artists from given location for artists#index
+  def compile_artists(location)
+    Artist.where("state = ? and city = ?", "#{location.state}", "#{location.city}" )
+  end
+
+  # temporary method for selecting current artist highlighted in artists#index
+  def select_artist(artists, params = nil)
+    params ? ArtistCommander.select_spotify_id(artists, params) : ArtistCommander.select_spotify_id(artists)
+  end
 end

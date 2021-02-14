@@ -1,3 +1,5 @@
+require 'location_helper'
+
 class LocationsController < ApplicationController
   before_action :set_location, only: %i[ show edit update destroy ]
 
@@ -21,15 +23,15 @@ class LocationsController < ApplicationController
 
   # POST /locations or /locations.json
   def create
-    @location = Location.where('city = ? and state = ?', "#{params['city']}", "#{params['state']}")[0]
+    city = params['city'].downcase
+    state = params['state'].upcase
+    @result = process_location(city, state)
 
-    respond_to do |format|
-      if @location
-        format.html { redirect_to "/artists?select_location=#{@location.id}" }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @location.errors, status: :unprocessable_entity }
-      end
+    if @result[:type] == "error"
+      flash[:error] = @result[:value]
+      redirect_to '/artists'
+    else
+      redirect_to "/artists?select_location=#{@result[:value].id}"
     end
   end
 
@@ -64,5 +66,9 @@ class LocationsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def location_params
       params.permit(:city, :state)
+    end
+
+    def process_location(city, state)
+      LocationHelper.process_city_state({city: city, state: state})
     end
 end
