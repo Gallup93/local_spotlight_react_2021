@@ -36,7 +36,7 @@ This repository is a playground for the revision of the original Local Spotliigh
 
 This repository started off as a playground for me to learn the basics of React and JavaScript. My immediate focus is on finishing the minimum viable project, getting it deployed for resume purposes, and then working hard on refactoring before starting the process of properly planning out the next sprint of development. 
 
-current to-do item:
+current to-do items:
 
 - Finish functionality for changing 'selected_artist' onClick from the artists index page
 - Implement user authorization
