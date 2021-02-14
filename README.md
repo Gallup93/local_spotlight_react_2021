@@ -42,10 +42,12 @@ current to-do items:
 - Implement user authorization
 - Fail gracefully when no artists assocaited with a location
 - More dynamic handeling of user input (location verification)
+- Implement aritst sorting options for index page
 - Beef up the testing
 - Retain user input after invalid submissions/page refresh
 - Add a 404 page
 - Implement VCR for API testing
 - Create user-favorites functionality
 - Deploy to Heroku
+- Seed database
 - Stylize
