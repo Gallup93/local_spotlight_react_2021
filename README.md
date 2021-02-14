@@ -34,10 +34,17 @@ This repository is a playground for the revision of the original Local Spotliigh
 
 # Current Plans
 
-This repository started off as a playground for me to learn the basics of React and JavaScript. My immediate plan moving forward from this point is to refactor the features that are already completed to be more dry and efficient. More importantly, I need to learn how to test React components and get the testing to a more respectable place. As for features, I need to learn how to use state and ajax calls to refresh the "selected artist" every time you click on an artists from the index page. From there, it will be time to add an Artist show page. 
+This repository started off as a playground for me to learn the basics of React and JavaScript. My immediate focus is on finishing the minimum viable project, getting it deployed for resume purposes, and then working hard on refactoring before starting the process of properly planning out the next sprint of development. 
 
-other to-do items:
+current to-do item:
 
-- Provide error messages for invalid location submissions (artist index, artist creation, user signup)
-- Implement user authorization 
-- Prevent selection of random locations that dont have associated artists
+- Finish functionality for changing 'selected_artist' onClick from the artists index page
+- Implement user authorization
+- Fail gracefully when no artists assocaited with a location
+- More dynamic handeling of user input (location verification)
+- Beef up the testing
+- Retain user input after invalid submissions/page refresh
+- Add a 404 page
+- Implement VCR for API testing
+- Create user-favorites functionality
+- Deploy to Heroku
