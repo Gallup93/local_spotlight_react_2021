@@ -10,6 +10,7 @@ class ArtistsController < ApplicationController
     @location = set_location
     @new_location = Location.new
     @artists = compile_artists(@location)
+    @selected_artist = Artist.all.sample
     @selected_spotify_id = select_artist(@artists, params['select_artist'])
   end
 
