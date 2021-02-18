@@ -8,10 +8,10 @@ class ArtistsController < ApplicationController
   # GET /artists or /artists.json
   def index
     @location = set_location
-    @new_location = Location.new
+    # @new_location = Location.new
     @artists = compile_artists(@location)
-    @selected_artist = Artist.all.sample
-    @selected_spotify_id = select_artist(@artists, params['select_artist'])
+    # @selected_artist = Artist.all.sample
+    @selected_spot_id = select_artist(@artists, params['select_artist'])
   end
 
   # GET /artists/1 or /artists/1.json

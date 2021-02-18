@@ -7,14 +7,14 @@ class ArtistsIndexWrap extends React.Component {
 
   constructor(props) {
     super(props);
-
+    this.state = { selected_spot_id: this.props.selected_spot_id };
   }
 
   render () {
     return (
       <div class="wrapper-component">
         <ArtistDisplay artists={this.props.artists}/><br></br>
-        <IFramePlayer spotify_id={this.props.selected_artist.spotify_id}/>
+        <IFramePlayer spotify_id={this.state.selected_spot_id}/>
       </div>
     );
   }
@@ -22,7 +22,7 @@ class ArtistsIndexWrap extends React.Component {
 
 ArtistDisplay.propTypes = {
   artists: PropTypes.array,
-  selected_artist: PropTypes.object
+  selected_spot_id: PropTypes.string
 };
 
 
