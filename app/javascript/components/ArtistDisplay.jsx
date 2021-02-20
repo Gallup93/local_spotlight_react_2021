@@ -3,8 +3,11 @@ import PropTypes from "prop-types";
 import ArtistContainer from './ArtistContainer'
 
 class ArtistDisplay extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { artists: this.props.artists};
+  }
   render () {
-
     function artistsList (artists, action) {
       return (
         <div>
@@ -27,11 +30,19 @@ class ArtistDisplay extends React.Component {
         </div>
       )
     }
-    return (
-      <div class="index-container">
-        {artistsList(this.props.artists, this.props.action)}
-      </div>
-    )
+    if(this.state.artists == undefined || this.state.artists.length === 0){
+      return (
+        <div class="index-container">
+          <h1>No artists in database at this location</h1>
+        </div>
+      )
+    } else {
+      return(
+        <div class="index-container">
+          {artistsList(this.props.artists, this.props.action)}
+        </div>
+      )
+    }
   }
 };
 
