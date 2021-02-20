@@ -91,7 +91,7 @@ class ArtistCommander
     end
   end
 
-  def self.sort_artists(artists, key = nil)
+  def self.sort_artists(artists, key = "alpha")
     case key
     when "alpha"
       artists.order('LOWER(name)')
