@@ -90,4 +90,17 @@ class ArtistCommander
       end
     end
   end
+
+  def self.sort_artists(artists, key = nil)
+    case key
+    when "alpha"
+      artists.order('LOWER(name)')
+    when "followers"
+      artists.order(followers: :desc)
+    when "date-added"
+      artists.order(created_at: :desc)
+    else
+      artists.order(created_at: :desc)
+    end
+  end
 end

@@ -8,7 +8,8 @@ class ArtistsController < ApplicationController
   # GET /artists or /artists.json
   def index
     @location = set_location
-    @artists = compile_artists(@location)
+    local_artists = compile_artists(@location)
+    @artists = sort_artists(local_artists)
     @selected_artist = select_artist(@artists, params['select_artist'])
   end
 
@@ -97,5 +98,9 @@ class ArtistsController < ApplicationController
   # temporary method for selecting current artist highlighted in artists#index
   def select_artist(artists, params = nil)
     params ? ArtistCommander.set_selected_artist(artists, params) : ArtistCommander.set_selected_artist(artists)
+  end
+
+  def sort_artists(local_artists)
+    ArtistCommander.sort_artists(local_artists)
   end
 end
