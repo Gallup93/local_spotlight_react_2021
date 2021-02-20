@@ -1,26 +1,54 @@
-.wrapper-component {
+.index-page-wrapper {
   text-align: center;
   color: red;
   border-style: dashed;
   padding: 10px 10px 10px 10px;
 }
-.artist-display-component {
-  color: green;
-  border-style: dashed;
-  padding: 10px 10px 10px 10px;
-}
-.iframe-display-component {
-  color: blue;
-  border-style: dashed;
-  padding: 10px 10px 10px 10px;
-}
-.artist-container {
-  color: #000000;
-  border-style: dashed;
-  padding: 10px 10px 10px 10px;
-}
-.location-form-container {
+.search-box {
+  text-align: center;
   color: #FF9900;
   border-style: dashed;
   padding: 10px 10px 10px 10px;
 }
+.selected-artist {
+  text-align: center;
+  color: green;
+  border-style: dashed;
+  padding: 10px 10px 10px 10px;
+}
+.iframe-display {
+  text-align: center;
+  color: blue;
+  border-style: dashed;
+  padding: 10px 10px 10px 10px;
+}
+.index-container {
+  text-align: center;
+  color: black;
+  border-style: dashed;
+  padding: 10px 10px 10px 10px;
+}
+.artist-container {
+  text-align: center;
+  color: #8B008B;
+  border-style: dashed;
+  padding: 10px 10px 10px 10px;
+}
+
+/* .artist-display-component {
+  color: green;
+  border-style: dashed;
+  padding: 10px 10px 10px 10px;
+} */
+
+/* .artists-container {
+  color: #000000;
+  border-style: dashed;
+  padding: 10px 10px 10px 10px;
+} */
+
+/* .location-form-container {
+  color: #FF9900;
+  border-style: dashed;
+  padding: 10px 10px 10px 10px;
+} */

@@ -4,7 +4,9 @@ import PropTypes from "prop-types";
 class SelectedArtistDisplay extends React.Component {
   render () {
     return (
-      <h1>{this.props.selected_artist.name}</h1>
+      <div class="selected-artist">
+        <h1>{this.props.selected_artist.name}</h1>
+      </div>
     )
   }
 }

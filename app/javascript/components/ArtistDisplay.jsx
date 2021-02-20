@@ -6,7 +6,7 @@ class ArtistDisplay extends React.Component {
 
     function artistsList (artists, action) {
       return (
-        <div class="artist-display-component">
+        <div>
           <table>
             <thead>
               <tr>
@@ -27,7 +27,7 @@ class ArtistDisplay extends React.Component {
       )
     }
     return (
-      <div>
+      <div class="index-container">
         {artistsList(this.props.artists, this.props.action)}
       </div>
     )

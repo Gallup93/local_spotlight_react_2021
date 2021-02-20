@@ -17,7 +17,7 @@ class ArtistsIndexWrap extends React.Component {
   }
   render () {
     return (
-      <div class="wrapper-component">
+      <div class="index-page-wrapper">
         <SelectedArtistDisplay selected_artist={this.state.selected_artist}/>
         <ArtistDisplay artists={this.props.artists}  action={this.handler}/><br></br>
         <IFramePlayer spotify_id={this.state.selected_artist.spotify_id}/>
