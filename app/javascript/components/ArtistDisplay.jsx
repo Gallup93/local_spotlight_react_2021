@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import ArtistContainer from './ArtistContainer'
 
 class ArtistDisplay extends React.Component {
   render () {
@@ -16,8 +17,8 @@ class ArtistDisplay extends React.Component {
             <tbody>
               {
                 artists.map((artist) => (
-                  <div class="artist-container" key={`artist-${artist.id}`} onClick={() => action(artist)}>
-                    <td>{artist.name} | CITY: {artist.city}, STATE: {artist.state}, FOLLOWERS: {artist.followers}</td>
+                  <div onClick={() => action(artist)}>
+                    < ArtistContainer artist={artist} action={action}/>
                   </div>
                 ))
               }
