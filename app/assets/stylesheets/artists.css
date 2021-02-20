@@ -1,8 +1,10 @@
 .index-page-wrapper {
   text-align: center;
-  color: red;
-  border-style: dashed;
+  color: white;
+  border-style: ridge;
   padding: 10px 10px 10px 10px;
+
+  background-color: rgba(17, 28, 59, 0.2);
 }
 .search-box {
   text-align: center;
@@ -12,43 +14,56 @@
 }
 .selected-artist {
   text-align: center;
-  color: green;
-  border-style: dashed;
+  color: white;
+  border-style: ridge;
   padding: 10px 10px 10px 10px;
+  width: 550px;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 .iframe-display {
   text-align: center;
-  color: blue;
-  border-style: dashed;
+  color: white;
+  border-style: ridge;
   padding: 10px 10px 10px 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 550px;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
 }
 .index-container {
+  width: 550px;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+
   text-align: center;
   color: black;
-  border-style: dashed;
+  border-style: ridge;
   padding: 10px 10px 10px 10px;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 .artist-container {
   text-align: center;
-  color: #8B008B;
-  border-style: dashed;
+  color: white;
+  border-style: ridge;
   padding: 10px 10px 10px 10px;
+  width: 530px;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
 }
-
-/* .artist-display-component {
-  color: green;
-  border-style: dashed;
+.index-view-page {
+  text-align: center;
+  color: white;
+  border-style: ridge;
   padding: 10px 10px 10px 10px;
-} */
-
-/* .artists-container {
-  color: #000000;
-  border-style: dashed;
-  padding: 10px 10px 10px 10px;
-} */
-
-/* .location-form-container {
-  color: #FF9900;
-  border-style: dashed;
-  padding: 10px 10px 10px 10px;
-} */
+  width: 700px;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.4);
+}

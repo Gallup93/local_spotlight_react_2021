@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+   background-image: url("https://images.freeimages.com/images/large-previews/2a7/hands-1317177.jpg");
+   background-size: cover;
+ }
