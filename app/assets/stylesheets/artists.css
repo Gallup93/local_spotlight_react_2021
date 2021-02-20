@@ -8,8 +8,8 @@
 }
 .search-box {
   text-align: center;
-  color: #FF9900;
-  border-style: dashed;
+  color: white;
+  border-style: ridge;
   padding: 10px 10px 10px 10px;
 }
 .selected-artist {
@@ -51,7 +51,7 @@
   color: white;
   border-style: ridge;
   padding: 10px 10px 10px 10px;
-  width: 530px;
+  width: 525px;
   height: auto;
   margin: 0 auto;
   position: relative;
@@ -62,6 +62,17 @@
   border-style: ridge;
   padding: 10px 10px 10px 10px;
   width: 700px;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.current-city-state {
+  text-align: center;
+  color: white;
+  border-style: ridge;
+  padding: 10px 10px 10px 10px;
+  width: 550px;
   height: auto;
   margin: 0 auto;
   position: relative;
