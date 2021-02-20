@@ -79,15 +79,28 @@ class ArtistCommander
     @artist.images = spotify_object["images"].map{|image| image["url"]}
   end
 
-  def self.select_spotify_id(artists, params = nil)
+  def self.set_selected_artist(artists, params = nil)
     if params
-      Artist.find(params).spotify_id
+      Artist.find(params)
     else
       if !artists.empty?
-        artists.sample.spotify_id
+        artists.first
       else
         "no artists"
       end
+    end
+  end
+
+  def self.sort_artists(artists, key = "alpha")
+    case key
+    when "alpha"
+      artists.order('LOWER(name)')
+    when "followers"
+      artists.order(followers: :desc)
+    when "date-added"
+      artists.order(created_at: :desc)
+    else
+      artists.order(created_at: :desc)
     end
   end
 end

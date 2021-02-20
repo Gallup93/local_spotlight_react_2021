@@ -2,31 +2,28 @@ import React from "react";
 import PropTypes from "prop-types";
 import IFramePlayer from './IFramePlayer'
 import ArtistDisplay from './ArtistDisplay'
+import SelectedArtistDisplay from './SelectedArtistDisplay'
 
 class ArtistsIndexWrap extends React.Component {
   constructor(props) {
     super(props);
     this.handler = this.handler.bind(this);
-    this.state = { selected_spot_id: this.props.selected_spot_id};
+    this.state = { selected_artist: this.props.selected_artist};
   }
-  handler(spot_id) {
+  handler(artist) {
      this.setState({
-       selected_spot_id: spot_id
+       selected_artist: artist
      });
   }
   render () {
     return (
-      <div class="wrapper-component">
+      <div class="index-page-wrapper">
+        <SelectedArtistDisplay selected_artist={this.state.selected_artist}/>
         <ArtistDisplay artists={this.props.artists}  action={this.handler}/><br></br>
-        <IFramePlayer spotify_id={this.state.selected_spot_id}/>
+        <IFramePlayer spotify_id={this.state.selected_artist.spotify_id}/>
       </div>
     );
   }
 }
-
-ArtistDisplay.propTypes = {
-  artists: PropTypes.array,
-  selected_spot_id: PropTypes.string
-};
 
 export default ArtistsIndexWrap;

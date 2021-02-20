@@ -1,12 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import ArtistContainer from './ArtistContainer'
 
 class ArtistDisplay extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { artists: this.props.artists};
+  }
   render () {
     function artistsList (artists, action) {
       return (
-        <div class="artist-display-component">
-          <h1>---ARTISTS-DISPLAY-TABLE---</h1>
+        <div>
           <table>
             <thead>
               <tr>
@@ -16,8 +20,8 @@ class ArtistDisplay extends React.Component {
             <tbody>
               {
                 artists.map((artist) => (
-                  <div class="artist-container" key={`artist-${artist.id}`} onClick={() => action(artist.spotify_id)}>
-                    <td>{artist.name} | CITY: {artist.city}, STATE: {artist.state}, FOLLOWERS: {artist.followers}</td>
+                  <div onClick={() => action(artist)}>
+                    < ArtistContainer artist={artist} action={action}/>
                   </div>
                 ))
               }
@@ -26,11 +30,19 @@ class ArtistDisplay extends React.Component {
         </div>
       )
     }
-    return (
-      <div class="artists-container">
-        {artistsList(this.props.artists, this.props.action)}
-      </div>
-    )
+    if(this.state.artists == undefined || this.state.artists.length === 0){
+      return (
+        <div class="index-container">
+          <h1>No artists in database at this location</h1>
+        </div>
+      )
+    } else {
+      return(
+        <div class="index-container">
+          {artistsList(this.props.artists, this.props.action)}
+        </div>
+      )
+    }
   }
 };
 
