@@ -8,10 +8,8 @@ class ArtistsController < ApplicationController
   # GET /artists or /artists.json
   def index
     @location = set_location
-    # @new_location = Location.new
     @artists = compile_artists(@location)
-    # @selected_artist = Artist.all.sample
-    @selected_spot_id = select_artist(@artists, params['select_artist'])
+    @selected_artist = select_artist(@artists, params['select_artist'])
   end
 
   # GET /artists/1 or /artists/1.json
@@ -98,6 +96,6 @@ class ArtistsController < ApplicationController
 
   # temporary method for selecting current artist highlighted in artists#index
   def select_artist(artists, params = nil)
-    params ? ArtistCommander.select_spotify_id(artists, params) : ArtistCommander.select_spotify_id(artists)
+    params ? ArtistCommander.set_selected_artist(artists, params) : ArtistCommander.set_selected_artist(artists)
   end
 end

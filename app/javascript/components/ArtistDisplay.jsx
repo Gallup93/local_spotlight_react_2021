@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 
 class ArtistDisplay extends React.Component {
   render () {
+
     function artistsList (artists, action) {
       return (
         <div class="artist-display-component">
-          <h1>---ARTISTS-DISPLAY-TABLE---</h1>
           <table>
             <thead>
               <tr>
@@ -16,7 +16,7 @@ class ArtistDisplay extends React.Component {
             <tbody>
               {
                 artists.map((artist) => (
-                  <div class="artist-container" key={`artist-${artist.id}`} onClick={() => action(artist.spotify_id)}>
+                  <div class="artist-container" key={`artist-${artist.id}`} onClick={() => action(artist)}>
                     <td>{artist.name} | CITY: {artist.city}, STATE: {artist.state}, FOLLOWERS: {artist.followers}</td>
                   </div>
                 ))
@@ -27,7 +27,7 @@ class ArtistDisplay extends React.Component {
       )
     }
     return (
-      <div class="artists-container">
+      <div>
         {artistsList(this.props.artists, this.props.action)}
       </div>
     )

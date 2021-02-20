@@ -79,12 +79,12 @@ class ArtistCommander
     @artist.images = spotify_object["images"].map{|image| image["url"]}
   end
 
-  def self.select_spotify_id(artists, params = nil)
+  def self.set_selected_artist(artists, params = nil)
     if params
-      Artist.find(params).spotify_id
+      Artist.find(params)
     else
       if !artists.empty?
-        artists.sample.spotify_id
+        artists.first
       else
         "no artists"
       end
