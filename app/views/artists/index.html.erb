@@ -1,15 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<div class="location-form-container">
-  <%= form_with url: "/locations", method: :post, remote: true do |form| %>
-  <%= form.label :city, "DA CITY:" %>
-  <%= form.text_field :city %>
-  <%= form.label :city, "DA STATE:" %>
-  <%= form.text_field :state %>
-  <%= form.submit "Search" %>
-  <% end %>
-</div>
-
-<div>
-  <%= react_component 'ArtistsIndexWrap', artists: @artists, selected_artist: @selected_artist %>
-</div>
+<section class="artists-index-view">
+  <div class="index-view-page">
+    <div class="search-box">
+      <p>Enter a city and state abbreviation to explore:</p>
+      <%= form_with url: "/locations", method: :post, remote: true do |form| %>
+      <%= form.label :city, "City:" %>
+      <%= form.text_field :city %>
+      <%= form.label :city, "State:" %>
+      <%= form.text_field :state %>
+      <%= form.submit "Search" %>
+      <% end %>
+    </div>
+    <%= react_component 'ArtistsIndexWrap', artists: @artists, selected_artist: @selected_artist %>
+  </div>
+</section>

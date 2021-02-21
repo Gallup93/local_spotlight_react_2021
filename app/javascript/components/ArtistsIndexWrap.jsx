@@ -16,10 +16,19 @@ class ArtistsIndexWrap extends React.Component {
      });
   }
   render () {
+    function titleCase(str) {
+      str = str.toLowerCase().split(' ');
+      for (var i = 0; i < str.length; i++) {
+        str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+      }
+      return str.join(' ');
+    }
     return (
       <div class="index-page-wrapper">
-        <SelectedArtistDisplay selected_artist={this.state.selected_artist}/>
+      <br></br>
+        <h1 class="current-city-state">{titleCase(this.state.selected_artist.city)}, {this.state.selected_artist.state}</h1>
         <ArtistDisplay artists={this.props.artists}  action={this.handler}/><br></br>
+        <SelectedArtistDisplay selected_artist={this.state.selected_artist}/>
         <IFramePlayer spotify_id={this.state.selected_artist.spotify_id}/>
       </div>
     );
