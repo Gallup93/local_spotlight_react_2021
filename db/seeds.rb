@@ -12,6 +12,8 @@ denver = Location.create(city: "denver",state: "CO")
 milwaukee = Location.create(city: "milwaukee",state: "WI")
 locations = [rockford, chicago, denver, milwaukee]
 
+User.create(email: "DaBears85@example.com", password: "password", password_confirmation: "password", city: "chicago", state: "IL", location_id: chicago.id)
+
 4.times do |i|
     User.create(email: "user-#{i}@example.com", password: "password", password_confirmation: "password", city: "#{locations[i].city}", state: "#{locations[i].state}", location_id: locations[i].id)
 end
