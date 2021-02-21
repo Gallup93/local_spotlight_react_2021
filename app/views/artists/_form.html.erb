@@ -1,9 +1,9 @@
 <%= form_with url: "/artists", method: :post do |form| %>
-  <%= form.label :city, "DA CITY:" %>
+  <%= form.label :city, "City:" %>
   <%= form.text_field :city %>
-  <%= form.label :city, "DA STATE:" %>
+  <%= form.label :city, "State:" %>
   <%= form.text_field :state %>
-  <%= form.label :city, "DA SPOTIFY ID:" %>
+  <%= form.label :city, "Spotify ID:" %>
   <%= form.text_field :spotify_id %>
   <%= form.submit "Submit" %>
 <% end %>
