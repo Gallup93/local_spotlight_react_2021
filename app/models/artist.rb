@@ -5,4 +5,7 @@ class Artist < ApplicationRecord
   validates :name, presence: true
   validates :followers, presence: true
   validates :popularity, presence: true
+
+  has_many :favorites
+  has_many :users, through: :favorites
 end
