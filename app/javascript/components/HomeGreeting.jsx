@@ -7,7 +7,7 @@ class HomeGreeting extends React.Component {
       <div class="home-component">
         <h4>Hello {this.props.name}, </h4>
         <h2>Weclome to Local Spotlight!</h2>
-        <p>this is a public service announcement; this is only a test</p>
+        <p>A user-driven database of local Spotify artists</p>
       </div>
     );
   }
