@@ -11,4 +11,6 @@ class User < ApplicationRecord
   validates :state, presence: true
 
   belongs_to :location
+  has_many :favorites
+  has_many :artists, through: :favorites
 end
