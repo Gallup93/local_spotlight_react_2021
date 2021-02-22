@@ -2,9 +2,7 @@
 
 Local Spotlight is a user-driven database of Spotify artists and their assocaited home city/state. The purpose of the application is to help users find and share local music in their communities. 
 
-This repository is a playground for the revision of the original Local Spotliight V1 which was created as a school project in 2020. 
-- Original LS Repo: https://github.com/Gallup93/local_spotlight
-- Original LS Live Heroku: https://polar-caverns-76159.herokuapp.com/ 
+Heroku Live Link: http://local-spotlight.herokuapp.com/
 
 # Tech Stack
 
@@ -51,3 +49,8 @@ current to-do items:
 - Deploy to Heroku
 - Seed database
 - Stylize
+
+
+This repository is a playground for the revision of the original Local Spotliight V1 which was created as a school project in 2020. 
+- Original LS Repo: https://github.com/Gallup93/local_spotlight
+- Original LS Live Heroku: https://polar-caverns-76159.herokuapp.com/ 
