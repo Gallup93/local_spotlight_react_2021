@@ -1,6 +1,6 @@
 # Local Spotlight
 
-Local Spotlight is a user-driven database of Spotify artists and their assocaited home city/state. The purpose of the application is to help users find and share local music in their communities. 
+Local Spotlight is a user-driven database of Spotify artists and the city/state associated with that artist. The ultimate goal is to make it easier to discover and share the artists that live and play in your community.
 
 Heroku Live Link: http://local-spotlight.herokuapp.com/
 
@@ -30,25 +30,37 @@ Heroku Live Link: http://local-spotlight.herokuapp.com/
 * Add new artist to database
 `` '/artists/new' ``
 
-# Current Plans
+# Where things are:
 
-This repository started off as a playground for me to learn the basics of React and JavaScript. My immediate focus is on finishing the minimum viable project, getting it deployed for resume purposes, and then working hard on refactoring before starting the process of properly planning out the next sprint of development. 
+Right now, I am nearing the completion of V1 base functionality. V1 functionality includes: 
+* User login/signup (Devise gem)
+* Browse artists in database by city/state
+* Add new artist to database
+* Favoriting*
+* Artist show page (spotify discog)*
 
-current to-do items:
+[*in progress]
 
-- Finish functionality for changing 'selected_artist' onClick from the artists index page
-- Implement user authorization
-- Fail gracefully when no artists assocaited with a location
-- More dynamic handeling of user input (location verification)
-- Implement aritst sorting options for index page
-- Beef up the testing
-- Retain user input after invalid submissions/page refresh
-- Add a 404 page
-- Implement VCR for API testing
-- Create user-favorites functionality
-- Deploy to Heroku
-- Seed database
-- Stylize
+V1 started off as a learning exercise in JavaScript and React. While I’m proud of the progress I’ve made, I know there is a lot of room for refactoring what I have before I start the full planning process for V2. 
+
+## V1 Refactoring 
+* Testing. Need to implement Webmock/VCR and learn Jest testing for React
+* Annotations 
+* Making artist submission easier (dynamic spotify_id source acceptance/directive) 
+* Making city/state search more dynamic (case sensitivity and close name matches) [possibly restricting locations searches to valid locations in the database]
+* Show user what locations currently exist in database with artist associations 
+* Make artist index list scrollable
+* Implement user authorization for submitting & favoriting artists
+* Add sort drop down menu to artists index
+
+## Early V2 Functionality Ideas
+* Implement genre info for sorting/recommendations
+* Commenting on artist pages
+* User show page (top 8)
+* Friending 
+* Sharing to music feed
+* Add artists to playlist/follow on spotify
+
 
 
 This repository is a playground for the revision of the original Local Spotliight V1 which was created as a school project in 2020. 
