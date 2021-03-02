@@ -17,6 +17,9 @@ Heroku Live Link: http://local-spotlight.herokuapp.com/
 * RSpec
 
 * Devise
+
+# Current Schema
+![schema](/public/LS_v1_schema.png)
  
 # Current User Features
 
@@ -63,6 +66,6 @@ V1 started off as a learning exercise in JavaScript and React. While I’m proud
 
 
 
-This repository is a playground for the revision of the original Local Spotliight V1 which was created as a school project in 2020. 
+This repository started as a playground for the revision of the original Local Spotliight V1 which was created as a school project in 2020. 
 - Original LS Repo: https://github.com/Gallup93/local_spotlight
 - Original LS Live Heroku: https://polar-caverns-76159.herokuapp.com/ 
