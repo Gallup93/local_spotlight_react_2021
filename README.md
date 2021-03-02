@@ -20,7 +20,6 @@ Heroku Live Link: http://local-spotlight.herokuapp.com/
 
 # Current Schema
 ![schema](/public/LS_v1_schema.png)
- 
 # Current User Features
 
 * Login/Signup (via devise) 
