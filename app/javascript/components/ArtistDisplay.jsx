@@ -10,7 +10,7 @@ class ArtistDisplay extends React.Component {
   render () {
     function artistsList (artists, action) {
       return (
-        <div>
+        <div class="scroll-list">
           <table>
             <thead>
               <tr>

@@ -51,10 +51,11 @@
   color: white;
   border-style: ridge;
   padding: 10px 10px 10px 10px;
-  width: 525px;
+  width: auto;
   height: auto;
   margin: 0 auto;
   position: relative;
+  white-space: nowrap;
 }
 .index-view-page {
   text-align: center;
@@ -77,4 +78,8 @@
   margin: 0 auto;
   position: relative;
   background-color: rgba(0, 0, 0, 0.4);
+}
+.scroll-list {
+  overflow: auto;
+  height: 300px;
 }
