@@ -94,5 +94,30 @@ RSpec.describe "Location Helper" do
       expect(result[:type]).to eq("error")
       expect(result[:value]).to eq("Invalid State")
     end
+
+    it "existing location returns that Location object" do
+      city_state = { city: "Rockford", state: "IL" }
+      LocationHelper.process_city_state(city_state)
+      result = LocationHelper.process_city_state(city_state)
+      expect(result[:type]).to eq("success")
+      expect(result[:value][:id]).to_not eq(nil)
+    end
+  end
+
+  describe "set browse location for artists index page" do
+    it "returns random location when no params or cur_user is provided" do
+      result = LocationHelper.browse_location(params = nil, cur_user = nil)
+      expect(result.id).to_not eq(nil)
+    end
+    it "returns user default location when cur_user exists" do
+      user = User.create(email: "test@example.com", password: "password", password_confirmation: "password", city: "chicago", state: "IL", location_id: 2)
+      result = LocationHelper.browse_location(params = nil, cur_user = user)
+      expect(result.id).to eq(2)
+    end
+    it "returns provided location when params exists" do
+      user = User.create(email: "test@example.com", password: "password", password_confirmation: "password", city: "chicago", state: "IL", location_id: 2)
+      result = LocationHelper.browse_location(params = 3, cur_user = user)
+      expect(result.id).to eq(3)
+    end
   end
 end
