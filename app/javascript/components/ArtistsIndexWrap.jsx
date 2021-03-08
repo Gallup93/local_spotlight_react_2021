@@ -29,7 +29,7 @@ class ArtistsIndexWrap extends React.Component {
         <h1 class="current-city-state">{titleCase(this.state.selected_artist.city)}, {this.state.selected_artist.state}</h1>
         <ArtistDisplay artists={this.props.artists}  action={this.handler}/><br></br>
         <SelectedArtistDisplay selected_artist={this.state.selected_artist}/>
-        <IFramePlayer spotify_id={this.state.selected_artist.spotify_id}/>
+        <IFramePlayer type="artist" spotify_id={this.state.selected_artist.spotify_id}/>
       </div>
     );
   }
