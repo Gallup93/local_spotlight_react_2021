@@ -83,3 +83,41 @@
   overflow: auto;
   height: 300px;
 }
+.artist-image {
+  border-style: ridge;
+  padding: 10px 10px 10px 10px;
+  width: 550px;
+  text-align: center;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.show-name {
+  color: white;
+  border-style: ridge;
+  padding: 10px 10px 10px 10px;
+  width: 550px;
+  text-align: center;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.artist-info {
+  color: white;
+  border-style: ridge;
+  padding: 10px 10px 10px 10px;
+  width: 550px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.show-wrap {
+  color: white;
+  border-style: ridge;
+  padding: 10px 10px 10px 10px;
+  width: 750px;
+  margin: 0 auto;
+  background-color: rgba(17, 28, 59, 0.2);
+}

@@ -14,8 +14,8 @@ class ArtistsShowWrap extends React.Component {
   render() {
     return(
       <div class="show-wrap">
-        <ArtistImage urls={this.state.artist.images}/>
         <ArtistsShowName name={this.state.artist.name}/>
+        <ArtistImage urls={this.state.artist.images}/>
         <ArtistInfo artist={this.state.artist} />
         <IFramePlayer type="album" spotify_id={this.state.selected_album.spotify_id}/>
       </div>
