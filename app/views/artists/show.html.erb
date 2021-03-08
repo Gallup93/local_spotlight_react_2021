@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<%= react_component 'ArtistsShowWrap', artist: @artist, albums: @albums%>
+
 <%= link_to 'Edit', edit_artist_path(@artist) %> |
 <%= link_to 'Back', artists_path %>
