@@ -15,6 +15,7 @@ class ArtistsController < ApplicationController
 
   # GET /artists/1 or /artists/1.json
   def show
+    @albums = Artist.find(params["id"]).albums
   end
 
   # GET /artists/new
@@ -36,6 +37,7 @@ class ArtistsController < ApplicationController
       redirect_to '/artists/new'
     else
       @artist.save
+      associate_artist_albums
       respond_to do |format|
         @artist.save
         format.html { redirect_to @artist, notice: "Artist was successfully created." }
@@ -102,5 +104,15 @@ class ArtistsController < ApplicationController
 
   def sort_artists(local_artists)
     ArtistCommander.sort_artists(local_artists)
+  end
+
+  def associate_artist_albums
+    albums = SpotifyApiHelper.new.get_artist_albums(@artist.spotify_id)
+    albums["items"].each do |album|
+      Album.create(
+        name: album["name"], release_date: album["release_date"], num_tracks: album["total_tracks"],
+        images: album["images"], spotify_id: album["id"], artist_id: @artist.id
+      )
+    end
   end
 end
