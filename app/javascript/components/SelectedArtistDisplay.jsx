@@ -5,7 +5,7 @@ class SelectedArtistDisplay extends React.Component {
   render () {
     return (
       <div class="selected-artist">
-        <h1>{this.props.selected_artist.name}</h1>
+        <h1><a href={`/artists/${this.props.selected_artist.id}`}>{this.props.selected_artist.name}</a></h1>
       </div>
     )
   }
