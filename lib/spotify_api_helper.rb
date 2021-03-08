@@ -35,4 +35,18 @@ class SpotifyApiHelper
 
     JSON.parse(response.read_body)
   end
+
+  def get_artist_albums(spotify_id)
+    url = URI("https://api.spotify.com/v1/artists/#{spotify_id}/albums?limit=50&include_groups=album,single,compilation")
+
+    https = Net::HTTP.new(url.host, url.port);
+    https.use_ssl = true
+
+    request = Net::HTTP::Get.new(url)
+    request["Authorization"] = "Bearer #{@req_token}"
+
+    response = https.request(request)
+
+    JSON.parse(response.read_body)
+  end
 end
