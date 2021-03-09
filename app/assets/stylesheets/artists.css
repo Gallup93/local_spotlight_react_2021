@@ -112,12 +112,30 @@
   margin: 0 auto;
   background-color: rgba(0, 0, 0, 0.8);
 }
-
 .show-wrap {
   color: white;
   border-style: ridge;
   padding: 10px 10px 10px 10px;
   width: 750px;
   margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.album-container {
+  object-fit: contain;
+  text-align: center;
+  color: white;
+  border-style: ridge;
+  padding: 10px 10px 10px 10px;
   background-color: rgba(17, 28, 59, 0.2);
+}
+.discog-container {
+  overflow: auto;
+  height: 400px;
+  margin: 0 auto;
+  width: 550px;
+  text-align: center;
+  color: white;
+  border-style: ridge;
+  padding: 10px 10px 10px 10px;
+  background-color: rgba(0, 0, 0, 0.3);
 }
