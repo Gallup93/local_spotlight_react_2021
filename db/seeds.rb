@@ -5,8 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'spotify_api_helper'
 
 rockford = Location.create(city: "rockford",state: "IL")
+boston = Location.create(city: "boston",state: "MA")
 chicago = Location.create(city: "chicago",state: "IL")
 denver = Location.create(city: "denver",state: "CO")
 milwaukee = Location.create(city: "milwaukee",state: "WI")
@@ -41,3 +43,18 @@ Artist.create(city: "chicago", state: "IL", spotify_id: "#{spotify_ids[8]}", nam
 
 Artist.create(city: "denver", state: "CO", spotify_id: "#{spotify_ids[9]}", name: "Eldren", followers: 5000, popularity: rand(1..100), genres: genres.sample(3), images: images, location_id: denver.id)
 Artist.create(city: "denver", state: "CO", spotify_id: "#{spotify_ids[10]}", name: "Decollage", followers: 50, popularity: rand(1..100), genres: genres.sample(3), images: images, location_id: denver.id)
+
+
+def associate_artist_albums(artist)
+  albums = SpotifyApiHelper.new.get_artist_albums(artist.spotify_id)
+  albums["items"].each do |album|
+    Album.create(
+      name: album["name"], release_date: album["release_date"], num_tracks: album["total_tracks"],
+      images: album["images"], spotify_id: album["id"], artist_id: artist.id
+    )
+  end
+end
+
+Artist.all.each do |artist|
+  associate_artist_albums(artist)
+end

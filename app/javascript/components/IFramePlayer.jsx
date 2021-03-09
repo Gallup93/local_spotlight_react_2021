@@ -7,7 +7,8 @@ import axios from 'axios'
 class IFramePlayer extends React.Component {
   render () {
     var spotifyID = this.props.spotify_id
-    var iframe_link = `https://open.spotify.com/embed/artist/${spotifyID}`
+    var type = this.props.type
+    var iframe_link = `https://open.spotify.com/embed/${type}/${spotifyID}`
 
     if(spotifyID != "no artists") {
       return (
@@ -26,7 +27,8 @@ class IFramePlayer extends React.Component {
 }
 
 IFramePlayer.propTypes = {
-  spotify_id: PropTypes.string
+  spotify_id: PropTypes.string,
+  type: PropTypes.string
 };
 
 export default IFramePlayer;
