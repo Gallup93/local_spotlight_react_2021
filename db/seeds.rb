@@ -8,6 +8,7 @@
 require 'spotify_api_helper'
 
 rockford = Location.create(city: "rockford",state: "IL")
+boston = Location.create(city: "boston",state: "MA")
 chicago = Location.create(city: "chicago",state: "IL")
 denver = Location.create(city: "denver",state: "CO")
 milwaukee = Location.create(city: "milwaukee",state: "WI")
